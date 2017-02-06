@@ -1,0 +1,26 @@
+{
+  "name": "test-serverless",
+  "version": "1.0.0",
+  "description": "This is a showcase of the Serverless framework",
+  "keywords": [
+    "serverless",
+    "lambda",
+    "aws"
+  ],
+  "devDependencies": {
+    "aws-sdk": "^2.7.2",
+    "serverless": "^1.5.0"
+  },
+  "scripts": {
+    "test:hello": "sls invoke --function hello",
+    "test:hello:local": "sls invoke local --function hello",
+    "test:item:local": "sls invoke local --function item --data '{\"pathParameters\": {\"id\": 123}}'",
+    "test:item:local:json": "sls invoke local --function item --path event.json",
+    "deploy:hello": "sls deploy function --function hello --stage dev --verbose",
+    "deploy:item": "sls deploy function --function item --stage dev --verbose",
+    "deploy": "sls deploy --verbose --stage dev"
+  },
+  "author": "Jacek Wasowski <jacek.wasowski@here.com>",
+  "license": "MIT",
+  "private": false
+}

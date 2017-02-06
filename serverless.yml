@@ -1,0 +1,35 @@
+service: test-serverless
+
+provider:
+  name: aws
+  runtime: nodejs4.3
+  
+functions:
+  hello:
+    handler: handler.hello
+    memorySize: 512
+    events:
+      - http:
+          path: hello
+          method: get
+          cors: true
+
+  item:
+    handler: handler.item
+    events:
+      - http:
+          path: item/{id}
+          method: get
+
+package:
+  include:
+    - handler.js
+  exclude:
+    - node_modules/**
+    - package.json
+    - event.json
+    - .eslintrc.yml
+    - .git/**
+    - .gitignore
+
+# https://mz08h3owyb.execute-api.us-east-1.amazonaws.com/dev/hello
